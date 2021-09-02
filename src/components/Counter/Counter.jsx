@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Button, FormControl, InputGroup} from 'react-bootstrap';
 
 const Counter = (props) => {
     const [counter, setCounter] = useState(0);
 
     const handlePlus = () => {
-        setCounter(counter + 1);
+        let newCounter = counter + 1;
+        setCounter(newCounter);
+
+        props.sendOnDataCounter(newCounter);
     }
 
     const handleMinus = () => {
-        if (counter > 0) {
+        let newCounter = counter - 1; 
+
+        if (newCounter >= 0) {
             setCounter(counter - 1);
+            props.sendOnDataCounter(newCounter);
         }
     }
-
-    // coba kirim data ke parent
-    useEffect(() => {
-        props.sendOnDataCounter(counter);
-    });
-
+    
     return (
         <div className='mt-4 d-flex justify-content-center'>
             <InputGroup className='w-25'>
@@ -29,5 +30,4 @@ const Counter = (props) => {
         </div>
     )
 }
-
 export default Counter;

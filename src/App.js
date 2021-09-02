@@ -1,14 +1,23 @@
 import React from 'react';
-import Todo from './components/todo/Todo';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import Navbar from './components/Navbar/Navbar';
+
+import Todo from './pages/Todo';
+import Post from './pages/Post';
+import Detail from './components/Post/Detail';
 
 const App = () => {
   return (
-    <Container className='py-5 text-center'>
-        <Todo/>
-    </Container>
+      <Router>
+        <Navbar />
+
+        <Switch>
+          <Route path='/posts' component={Post} />
+          <Route path='/post/:id' component={Detail} />
+          <Route path='/' component={Todo} />
+        </Switch>
+      </Router>
   )
 }
 

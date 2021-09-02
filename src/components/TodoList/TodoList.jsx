@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import Counter from '../counter/Counter';
+import Counter from '../Counter/Counter';
 
-const TodoList = (props) => {
+const TodoList = (props) => {    
     return (
         <div className='mt-4'>
             <ListGroup>
@@ -13,9 +13,8 @@ const TodoList = (props) => {
                 }
             </ListGroup>
 
-            <Counter sendOnDataCounter={(val) => props.onDataCounter(val)} />
+            <Counter sendOnDataCounter={props.onDataCounter} />
         </div>
     );
 }
-
-export default TodoList
+export default TodoList;
